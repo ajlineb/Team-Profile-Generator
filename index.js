@@ -38,7 +38,7 @@ const askQuestions = (fileName, data) => {
 
 function init() {
     console.log("Lets build your team!");
-    askQuestions("./dist/team.js", questions);
+    askQuestions("./dist/team.html", questions);
 };
 
 init();
