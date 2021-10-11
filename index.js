@@ -5,6 +5,11 @@ const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
 
+//containers
+var manager;
+var engineers = [];
+var interns = [];
+
 //answers must be getting applied to the classes after answers are taken in?
 
 const questions = [
@@ -33,7 +38,7 @@ const askQuestionsManager = (data) => {
         {
             type: 'input',
             message: data[1],
-            name: 'manaagerId'
+            name: 'managerId'
 
         },
         {
@@ -49,14 +54,10 @@ const askQuestionsManager = (data) => {
     ])
     .then((answersManager) => {
         const { managerName, managerId, managerEmail, managerOffice } = answersManager;
-
+        manager = new Manager(managerName, managerId, managerEmail, managerOffice);
+        console.log(manager);
         askMembers(questions);
-        return {
-            managerName, managerId, managerEmail, managerOffice
-        };
-        // fs.writeFile(fileName, html, (err) =>
-        // err ? console.error(err) : console.log("Successfully created an HTML File!")
-        // );
+        return manager;
     });
 };
 
@@ -87,7 +88,9 @@ const askMembers = (data) => {
 
         if (addMember === 'I do not want to add anymore members.') {
             //ends the questions and begins setting up the html
-
+            console.log(manager);
+            console.log(engineers);
+            console.log(interns);
         };
     });
 };
@@ -118,10 +121,10 @@ const askQuestionsEngineer = (data) => {
     .then((answers) => {
         const { engineerName, engineerId, engineerEmail, engineerGitHub } = answers;
 
+        engineers.push(new Engineer(engineerName, engineerId, engineerEmail, engineerGitHub));
+        console.log(engineers);
         askMembers(questions);
-        return {
-            engineerName, engineerId, engineerEmail, engineerGitHub
-        };
+        return engineers;
     });
 };
 
@@ -152,10 +155,10 @@ const askQuestionsIntern = (data) => {
     .then((answers) => {
         const { internName, internId, internEmail, internSchool } = answers;
 
+        interns.push(new Intern(internName, internId, internEmail, internSchool));
+        console.log(interns);
         askMembers(questions);
-        return {
-            internName, internId, internEmail, internSchool
-        };
+        return interns;
     });
 };
 
