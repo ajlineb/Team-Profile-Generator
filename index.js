@@ -1,9 +1,10 @@
 const { prompt } = require("inquirer");
-const fs = require("fs");
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
+const construct = require("./src/fabricator");
+const constructHTML = require("./src/fabricator");
 
 //containers
 var manager;
@@ -91,6 +92,7 @@ const askMembers = (data) => {
             console.log(manager);
             console.log(engineers);
             console.log(interns);
+            constructHTML(manager, engineers, interns);
         };
     });
 };
@@ -163,7 +165,7 @@ const askQuestionsIntern = (data) => {
 };
 
 function init() {
-    console.log("Lets build your team!");
+    console.log("\x1b[35m%s\x1b[0m", "\nLets build your team!\n");
     askQuestionsManager(questions);
     //askQuestionsManager("./dist/team.html", questions, true);
 };
