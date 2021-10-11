@@ -1,7 +1,26 @@
 const fs = require("fs");
 
-const constructHTML = (managerArray, engineerArray, internArray) => {
+const engineersFile = (array) => {
+    //will use a for loop to go through each object in the engineer array
+    //will develop each card that will be needed
+    array.forEach(function (engineer) {
+        //console.log(engineer);
+    });
+};
+
+const internFile = (array) => {
+    //will use a for loop to go through each object in the intern array
+    //will develop each card that will be needed
+    array.forEach(function (intern) {
+        //console.log(engineer);
+    });
+}
+
+const constructHTML = (manager, engineerArray, internArray) => {
     let fileName = './dist/team.html';
+    engineersFile(engineerArray);
+    internFile(internArray);
+
     let html =
 `    <!DOCTYPE html>
 <html lang="en">

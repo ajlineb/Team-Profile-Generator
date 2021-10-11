@@ -1,10 +1,9 @@
 const { prompt } = require("inquirer");
-const Employee = require("./lib/Employee");
+// const Employee = require("./lib/Employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
 const construct = require("./src/fabricator");
-const constructHTML = require("./src/fabricator");
 
 //containers
 var manager;
@@ -92,7 +91,7 @@ const askMembers = (data) => {
             console.log(manager);
             console.log(engineers);
             console.log(interns);
-            constructHTML(manager, engineers, interns);
+            construct(manager, engineers, interns);
         };
     });
 };
