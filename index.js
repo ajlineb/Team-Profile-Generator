@@ -73,15 +73,21 @@ const askMembers = (data) => {
             ],
         }
     ])
-    .then((answersMoreMembers) => {
-        if (answersMoreMembers === 'Engineer') {
+    .then((answer) => {
+        const { addMember } = answer;
+        if (addMember === 'Engineer') {
             //moves on to the questions for an Engineer member
             askQuestionsEngineer(questions);
         };
 
-        if (answersMoreMembers === 'Intern') {
+        if (addMember === 'Intern') {
             //moves on to the questions for an Intern member
             askQuestionsIntern(questions);
+        };
+
+        if (addMember === 'I do not want to add anymore members.') {
+            //ends the questions and begins setting up the html
+
         };
     });
 };
@@ -91,26 +97,26 @@ const askQuestionsEngineer = (data) => {
         {
             type: 'input',
             message: data[5],
-            name: 'internName',
+            name: 'engineerName',
         },
         {
             type: 'input',
             message: data[6],
-            name: 'internId',
+            name: 'engineerId',
         },
         {
             type: 'input',
             message: data[7],
-            name: 'internEmail',
+            name: 'engineerEmail',
         },
         {
             type: 'input',
             message: data[8],
-            name: 'internSchool',
+            name: 'engineerGitHub',
         },
     ])
-    .then((answersEngineer) => {
-        const { engineerName, engineerId, engineerEmail, engineerGitHub } = answersEngineer;
+    .then((answers) => {
+        const { engineerName, engineerId, engineerEmail, engineerGitHub } = answers;
 
         askMembers(questions);
         return {
@@ -125,25 +131,34 @@ const askQuestionsIntern = (data) => {
         {
             type: 'input',
             message: data[9],
-            name: 'engineerName',
+            name: 'internName',
         },
         {
             type: 'input',
             message: data[10],
-            name: 'engineerId',
+            name: 'internId',
         },
         {
             type: 'input',
             message: data[11],
-            name: 'engineerEmail',
+            name: 'internEmail',
         },
         {
             type: 'input',
             message: data[12],
-            name: 'engineerGitHub',
+            name: 'internSchool',
         },
     ])
-}
+    .then((answers) => {
+        const { internName, internId, internEmail, internSchool } = answers;
+
+        askMembers(questions);
+        return {
+            internName, internId, internEmail, internSchool
+        };
+    });
+};
+
 function init() {
     console.log("Lets build your team!");
     askQuestionsManager(questions);
