@@ -23,32 +23,45 @@ const questions = [
     "What is your intern's school?"                     //12
 ];
 
-const askQuestions = (fileName, data, isTrue) => {
+const askQuestionsManager = (data) => {
     prompt([
         {
             type: 'input',
             message: data[0],
-            name: 'managerName',
-            when: (isTrue),
+            name: 'managerName'
         },
         {
             type: 'input',
             message: data[1],
-            name: 'manaagerId',
-            when: (isTrue),
+            name: 'manaagerId'
+
         },
         {
             type: 'input',
             message: data[2],
-            name: 'managerEmail',
-            when: (isTrue),
+            name: 'managerEmail'
         },
         {
             type: 'input',
             message: data[3],
-            name: 'managerOffice',
-            when: (isTrue),
-        },
+            name: 'managerOffice'
+        }
+    ])
+    .then((answersManager) => {
+        const { managerName, managerId, managerEmail, managerOffice } = answersManager;
+
+        askMembers(questions);
+        return {
+            managerName, managerId, managerEmail, managerOffice
+        };
+        // fs.writeFile(fileName, html, (err) =>
+        // err ? console.error(err) : console.log("Successfully created an HTML File!")
+        // );
+    });
+};
+
+const askMembers = (data) => {
+    prompt([
         {
             type: 'list',
             message: data[4],
@@ -60,18 +73,81 @@ const askQuestions = (fileName, data, isTrue) => {
             ],
         }
     ])
-    .then((answers) => {
-        const {} = answers;
+    .then((answersMoreMembers) => {
+        if (answersMoreMembers === 'Engineer') {
+            //moves on to the questions for an Engineer member
+            askQuestionsEngineer(questions);
+        };
 
-        fs.writeFile(fileName, html, (err) =>
-        err ? console.error(err) : console.log("Successfully created an HTML File!")
-        );
+        if (answersMoreMembers === 'Intern') {
+            //moves on to the questions for an Intern member
+            askQuestionsIntern(questions);
+        };
     });
 };
 
+const askQuestionsEngineer = (data) => {
+    prompt([
+        {
+            type: 'input',
+            message: data[5],
+            name: 'internName',
+        },
+        {
+            type: 'input',
+            message: data[6],
+            name: 'internId',
+        },
+        {
+            type: 'input',
+            message: data[7],
+            name: 'internEmail',
+        },
+        {
+            type: 'input',
+            message: data[8],
+            name: 'internSchool',
+        },
+    ])
+    .then((answersEngineer) => {
+        const { engineerName, engineerId, engineerEmail, engineerGitHub } = answersEngineer;
+
+        askMembers(questions);
+        return {
+            engineerName, engineerId, engineerEmail, engineerGitHub
+        };
+    });
+};
+
+
+const askQuestionsIntern = (data) => {
+    prompt([
+        {
+            type: 'input',
+            message: data[9],
+            name: 'engineerName',
+        },
+        {
+            type: 'input',
+            message: data[10],
+            name: 'engineerId',
+        },
+        {
+            type: 'input',
+            message: data[11],
+            name: 'engineerEmail',
+        },
+        {
+            type: 'input',
+            message: data[12],
+            name: 'engineerGitHub',
+        },
+    ])
+}
 function init() {
     console.log("Lets build your team!");
-    askQuestions("./dist/team.html", questions, true);
+    askQuestionsManager(questions);
+    //askQuestionsManager("./dist/team.html", questions, true);
 };
 
 init();
