@@ -124,7 +124,6 @@ const askQuestionsEngineer = (data) => {
     });
 };
 
-
 const askQuestionsIntern = (data) => {
     prompt([
         {
