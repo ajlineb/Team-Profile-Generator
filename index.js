@@ -55,7 +55,6 @@ const askQuestionsManager = (data) => {
     .then((answersManager) => {
         const { managerName, managerId, managerEmail, managerOffice } = answersManager;
         manager = new Manager(managerName, managerId, managerEmail, managerOffice);
-        console.log(manager);
         askMembers(questions);
         return manager;
     });
@@ -88,9 +87,6 @@ const askMembers = (data) => {
 
         if (addMember === 'I do not want to add anymore members.') {
             //ends the questions and begins setting up the html
-            console.log(manager);
-            console.log(engineers);
-            console.log(interns);
             construct(manager, engineers, interns);
         };
     });
@@ -123,7 +119,6 @@ const askQuestionsEngineer = (data) => {
         const { engineerName, engineerId, engineerEmail, engineerGitHub } = answers;
 
         engineers.push(new Engineer(engineerName, engineerId, engineerEmail, engineerGitHub));
-        console.log(engineers);
         askMembers(questions);
         return engineers;
     });
@@ -157,7 +152,6 @@ const askQuestionsIntern = (data) => {
         const { internName, internId, internEmail, internSchool } = answers;
 
         interns.push(new Intern(internName, internId, internEmail, internSchool));
-        console.log(interns);
         askMembers(questions);
         return interns;
     });
