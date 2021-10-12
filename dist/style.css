@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(255, 226, 226);
+    font-family: 'Roboto', sans-serif; /*google font roboto*/
+}
+header {
+    text-align: center;
+    color: white;
+    height: 5rem;
+    background-color: rgb(109, 0, 0);
+    border-bottom: solid black 1px;
+}
+.title {
+    padding-top: 1rem;
+    font-weight: 900;
+    text-shadow: 5px 5px 5px #000000;
+}
+.card {
+    background-color: rgb(48, 42, 42);
+    color: white;
+    border: solid rgba(0, 0, 0, 0.486) .4rem;
+    margin: 1rem;
+    box-shadow: 12px 12px 4px 1px rgba(0, 0, 0, 0.2);
+}
+.icon {
+    width: 100%;
+    background-color: rgb(191, 161, 219);
+    /* border-radius: 1rem; */
+}
+.manager {
+    background-color: cornflowerblue;
+}
+.engineer {
+    background-color: rgb(155, 0, 31);
+}
+.intern {
+    background-color: rgb(26, 117, 26);
+}
+.border {
+    border: solid 1px;
+    padding: .3rem;
+    background: gray;
+}
