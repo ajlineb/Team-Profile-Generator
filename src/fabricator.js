@@ -12,7 +12,7 @@ const managerFile = (data) => {
   <div class="card-body">
     <h5 class="card-title border">Manager ${name}</h5>
     <p class="card-text border">ID# ${id}</p>
-    <p class="card-text border">Email: ${email}</p>
+    <p class="card-text border">Email: <a href="mailto:${email}">${email}</a></p>
     <p class="card-text border">Office Number: ${officeNumber}</p>
   </div>
 </div>`;
@@ -31,7 +31,7 @@ const engineersFile = (array) => {
   <div class="card-body">
     <h5 class="card-title border">Engineer ${name}</h5>
     <p class="card-text border">ID# ${id}</p>
-    <p class="card-text border">Email: ${email}</p>
+    <p class="card-text border">Email: <a href="mailto:${email}">${email}</a></p>
     <p class="card-text border">GitHub: ${github}</p>
   </div>
 </div>`;
@@ -53,7 +53,7 @@ const internFile = (array) => {
   <div class="card-body">
     <h5 class="card-title border">Intern ${name}</h5>
     <p class="card-text border">ID# ${id}</p>
-    <p class="card-text border">Email: ${email}</p>
+    <p class="card-text border">Email: <a href="mailto:${email}">${email}</a></p>
     <p class="card-text border">School: ${school}</p>
   </div>
 </div>`;
