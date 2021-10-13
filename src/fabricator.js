@@ -32,7 +32,7 @@ const engineersFile = (array) => {
     <h5 class="card-title border">Engineer ${name}</h5>
     <p class="card-text border">ID# ${id}</p>
     <p class="card-text border">Email: <a href="mailto:${email}">${email}</a></p>
-    <p class="card-text border">GitHub: ${github}</p>
+    <p class="card-text border">GitHub: <a href="https://github.com/${github}">${github}</a></p>
   </div>
 </div>`;
         cardEngineer = cardEngineer + fileTextEngineer;
