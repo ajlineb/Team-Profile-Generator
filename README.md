@@ -16,7 +16,7 @@
 
 ## Installation  
 
-Make sure to have node installed and inquirer installed.  
+Make sure to have node installed, jest and inquirer installed.  
 
 ## Description  
 
